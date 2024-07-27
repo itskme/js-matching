@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Memory Game</title>
+  <style>
+    .card {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      border: 1px solid black;
+      border-radius: 10px;
+      background-color: #ccc;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .card.flipped {
+      background-image: url('');
+      background-size: cover;
+    }
+    .score {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .message {
+      font-size: 24px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Memory Game</h1>
+  <div class="score">Score: 0</div>
+  <div class="message"></div>
+  <div class="card-deck">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
