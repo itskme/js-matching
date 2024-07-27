@@ -4,13 +4,17 @@
   <meta charset="UTF-8">
   <title>Memory Game</title>
   <style>
+    @font-face {
+        font-family: rbn;
+        src: url(rbn.otf);
+    }
     .card {
       width: 100px;
       height: 100px;
       margin: 10px;
       border: 1px solid black;
       border-radius: 10px;
-      background-color: #ccc;
+      background-color: #da2626;
       display: inline-block;
       cursor: pointer;
     }
@@ -18,7 +22,7 @@
       background-size: cover;
     }
     .score {
-      font-size: 24px;
+      font-size: 40px;
       font-weight: bold;
     }
     .message {
@@ -26,10 +30,27 @@
       font-weight: bold;
       color: green;
     }
+
+    body {
+        font-family: 'rbn', Courier, monospace;
+        text-align: center;
+        background-color: black;
+        color: rgb(255, 35, 35);
+        padding: 30px;
+        max-width: 800px;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 50px;
+    }
+
+    .card-deck {
+        padding-top: 40px;
+    }
   </style>
 </head>
 <body>
-  <h1>Memory Game</h1>
+  <h1>Fruits Memory Game</h1>
   <div class="score">Score: 0</div>
   <div class="message"></div>
   <div class="card-deck">
