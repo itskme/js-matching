@@ -15,7 +15,6 @@
       cursor: pointer;
     }
     .card.flipped {
-      background-image: url('');
       background-size: cover;
     }
     .score {
@@ -34,19 +33,59 @@
   <div class="score">Score: 0</div>
   <div class="message"></div>
   <div class="card-deck">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
   </div>
-  <script src="script.js"></script>
+
+  <script>
+    const images = ['apple.jpg', 'banana.jpg', 'cherry.jpg', 'date.jpg', 'elderberry.jpg', 'fig.jpg'];
+    const cards = [];
+    let flippedCards = [];
+    let score = 0;
+
+    
+    const allImages = [...images, ...images];
+
+    
+    for (let i = allImages.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [allImages[i], allImages[j]] = [allImages[j], allImages[i]];
+    }
+
+    
+    allImages.forEach((image) => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.setAttribute('data-image', image);
+      document.querySelector('.card-deck').appendChild(card);
+      cards.push(card);
+    });
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        if (flippedCards.length < 2) {
+          const imageUrl = card.getAttribute('data-image');
+          card.style.backgroundImage = `url(${imageUrl})`;
+          card.classList.add('flipped');
+          flippedCards.push(card);
+
+          if (flippedCards.length === 2) {
+            setTimeout(() => {
+              if (flippedCards[0].getAttribute('data-image') === flippedCards[1].getAttribute('data-image')) {
+                score++;
+                document.querySelector('.score').textContent = `Score: ${score}`;
+                flippedCards[0].removeEventListener('click', () => {});
+                flippedCards[1].removeEventListener('click', () => {});
+              } else {
+                flippedCards[0].style.backgroundImage = '';
+                flippedCards[1].style.backgroundImage = '';
+                flippedCards[0].classList.remove('flipped');
+                flippedCards[1].classList.remove('flipped');
+              }
+              flippedCards = [];
+            }, 1000);
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
